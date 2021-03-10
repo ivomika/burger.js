@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>burger.js</title>
+		<link rel="stylesheet" href="main.css" />
+	</head>
+	<body>
+		<button id="burger"></button>
+
+		<!-- connect js file -->
+		<script src="https://ivomika.ru/plugins/js/burger.js" rel="script"></script>
+		<!-- or -->
+		<script src="burger.js" rel="script"></script>
+
+		<!-- init new burger -->
+		<script rel="script">
+			Burger.init('burger', {
+				height: 25,
+				width: 40,
+				lineHeight: 4,
+				lineBorderRadius: 5,
+				topColor: '#333',
+				centerColor: '#333',
+				bottomColor: '#333',
+				transition: 200,
+				zIndex: 100,
+				click: () => {
+					if (Burger.opened === true) console.log('Open')
+					else console.log('Close')
+				},
+			})
+		</script>
+	</body>
+</html>
