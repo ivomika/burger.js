@@ -24,6 +24,16 @@ and add new container with unique id
 <button id="burger"></button>
 ```
 
+create simple nav menu
+```html
+<!-- add data-burger="nav" for your DOM elements -->
+<button id="burger">
+  <a href="#" data-burger="nav">One</a>
+  <a href="#" data-burger="nav">Two</a>
+  <a href="#" data-burger="nav">Three</a>
+</button>
+```
+
 ## Example and listing of all js settings
 
 ```js
@@ -36,7 +46,18 @@ Burger.init('burger', {
   centerColor: '#333',
   bottomColor: '#333',
   transition: 200,
-  zIndex: 100,
+  zIndex: 0,
+  padding: 0,
+  background: 'none',
+  borderRadius: 15,
+  menu: {
+    container: '.content',
+    width: 100,
+    height: 100,
+    background: 'rgba(0,0,0, 0.2)',
+    transition: 200,
+    zIndex: 0,
+  },
   click: () => {
     if (Burger.opened === true) console.log('Open')
     else console.log('Close')
