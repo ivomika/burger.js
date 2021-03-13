@@ -1,7 +1,7 @@
 # burger.js
 a simple burger for your projects
 
-## quick start
+## Quick start
 
 ```html
 <!-- connect js file -->
@@ -24,6 +24,7 @@ and add new container with unique id
 <button id="burger"></button>
 ```
 
+## Nav menu
 create simple nav menu
 ```html
 <!-- add data-burger="nav" for your DOM elements -->
@@ -49,7 +50,7 @@ Burger.init('burger', {
   zIndex: 0,
   padding: 0,
   background: 'none',
-  borderRadius: 15,
+  borderRadius: 0,
   menu: {
   // container nav menu. Nav menu will create in .content (standart: body)
     container: '.content', 
