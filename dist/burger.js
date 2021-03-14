@@ -1,6 +1,15 @@
 class Burger {
 	static opened = false
 
+	static standartMenuProperties = {
+		container: 'body',
+		width: 100,
+		height: 100,
+		background: 'rgba(0,0,0, 0.2)',
+		transition: 200,
+		zIndex: 0,
+	}
+
 	static standartProperties = {
 		height: 25,
 		width: 40,
@@ -16,15 +25,6 @@ class Burger {
 		borderRadius: 15,
 		menu: this.standartMenuProperties,
 		click: function () {},
-	}
-
-	static standartMenuProperties = {
-		container: 'body',
-		width: 100,
-		height: 100,
-		background: 'rgba(0,0,0, 0.2)',
-		transition: 200,
-		zIndex: 0,
 	}
 
 	// css style
@@ -151,6 +151,7 @@ class Burger {
 
 	static getNormalizedProperties(properties) {
 		let normalizedProperties = this.standartProperties
+		console.log(this.standartProperties)
 
 		Object.keys(this.standartProperties).forEach(standart => {
 			if (properties == null || Object.keys(properties).length == 0)
