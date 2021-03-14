@@ -151,7 +151,6 @@ class Burger {
 
 	static getNormalizedProperties(properties) {
 		let normalizedProperties = this.standartProperties
-		console.log(this.standartProperties)
 
 		Object.keys(this.standartProperties).forEach(standart => {
 			if (properties == null || Object.keys(properties).length == 0)
@@ -192,8 +191,6 @@ class Burger {
 			// нормализуем входные данные
 			// normalize input data
 			let normalizedProperties = this.getNormalizedProperties(properties)
-
-			console.log(normalizedProperties)
 
 			// создание стилей
 			// create style css
