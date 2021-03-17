@@ -2,9 +2,9 @@ class Burger {
 	static opened = false
 
 	static standartMenuProperties = {
-		container: 'body',
 		width: 100,
 		height: 100,
+		top: 0,
 		background: 'rgba(0,0,0, 0.2)',
 		transition: 200,
 		zIndex: 0,
@@ -103,10 +103,10 @@ class Burger {
 		  .burger-menu {
 			width: ${properties.menu.width}vw;
 			height: ${properties.menu.height}vh;
-			position: relative;
+			position: fixed;
 			transform: translateY(-120%);
 			left: calc((100% - ${properties.menu.width}vw) / 2);
-			top: 0;
+			top: ${properties.menu.top};
 			z-index: ${properties.menu.zIndex};
 			transition: transform ${properties.menu.transition}ms linear;
 			background: ${properties.menu.background};
@@ -192,6 +192,8 @@ class Burger {
 			// normalize input data
 			let normalizedProperties = this.getNormalizedProperties(properties)
 
+			console.log(normalizedProperties)
+
 			// создание стилей
 			// create style css
 			let style = document.createElement('style')
@@ -202,50 +204,14 @@ class Burger {
 			// create burger
 			let burger = document.querySelector('#' + target)
 			let span = document.createElement('span')
-			// span.innerHTML = 'Нажмите чтобы открыть бургер'
+			span.innerHTML = 'Нажмите чтобы открыть бургер'
 			burger.appendChild(span)
 
-			// this.target = burger
 			let menu = null
 
-			// ищем nav ссылки
-			const navs = document.querySelectorAll('[data-burger="nav"]')
-			if (navs.length != 0) {
-				navs.forEach(element => {
-					element.remove()
-				})
-
-				// creatre menu
-				menu = document.createElement('div')
-				menu.classList.add('burger-menu')
-				const nav = document.createElement('nav')
-				nav.classList.add('burger-menu__nav')
-				const list = document.createElement('ul')
-				list.classList.add('burger-menu__list')
-				const links = []
-				navs.forEach(element => {
-					const li = document.createElement('li')
-					li.classList.add('burger-menu__link')
-					li.innerHTML = element.outerHTML
-					links.push(li)
-				})
-
-				links.forEach(li => {
-					list.appendChild(li)
-				})
-				nav.appendChild(list)
-				menu.appendChild(nav)
-				const container = document.querySelector(
-					normalizedProperties.menu.container
-				)
-				container.appendChild(menu)
-			}
-
-			// const menu = document.querySelector('.burger-menu')
-
-			// клик по бургеру
-			// burger click
-			burger.addEventListener('click', () => {
+			// клик по бургеру и ссылкам
+			// burger click and links
+			const elementsClick = () => {
 				if (burger.classList.contains('active')) {
 					burger.classList.remove('active')
 					setTimeout(() => {
@@ -267,7 +233,45 @@ class Burger {
 				// пользовательский клик
 				// user click
 				normalizedProperties.click()
-			})
+			}
+
+			// ищем nav ссылки
+			// find nav links
+			const navs = document.querySelectorAll('[data-burger="nav"]')
+
+			if (navs.length != 0) {
+				navs.forEach(element => {
+					element.remove()
+				})
+
+				// создаем меню
+				// creatre menu
+				menu = document.createElement('div')
+				menu.classList.add('burger-menu')
+				const nav = document.createElement('nav')
+				nav.classList.add('burger-menu__nav')
+				const list = document.createElement('ul')
+				list.classList.add('burger-menu__list')
+				const links = []
+				navs.forEach(element => {
+					const li = document.createElement('li')
+					li.classList.add('burger-menu__link')
+					li.innerHTML = element.outerHTML
+					li.addEventListener('click', elementsClick)
+					links.push(li)
+				})
+
+				links.forEach(li => {
+					list.appendChild(li)
+				})
+				nav.appendChild(list)
+				menu.appendChild(nav)
+				document.body.appendChild(menu)
+			}
+
+			// добавляем клик по бургеру
+			// add burger click
+			burger.addEventListener('click', elementsClick)
 		})
 	}
 }
