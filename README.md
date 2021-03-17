@@ -52,10 +52,9 @@ Burger.init('burger', {
   background: 'none',
   borderRadius: 0,
   menu: {
-  // container nav menu. Nav menu will create in .content (standart: body)
-    container: '.content', 
     width: 100,
     height: 100,
+    top: '3rem',
     background: 'rgba(0,0,0, 0.2)',
     transition: 200,
     zIndex: 0,
