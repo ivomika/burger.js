@@ -19,7 +19,7 @@ class Burger {
 		centerColor: '#333',
 		bottomColor: '#333',
 		transition: 200,
-		zIndex: 0,
+		zIndex: 1,
 		padding: 0,
 		background: 'none',
 		borderRadius: 15,
@@ -104,17 +104,17 @@ class Burger {
 			width: ${properties.menu.width}vw;
 			height: ${properties.menu.height}vh;
 			position: fixed;
-			transform: translateY(-120%);
+			transform: translateY(calc(-100% - ${properties.menu.top}));
 			left: calc((100% - ${properties.menu.width}vw) / 2);
 			top: ${properties.menu.top};
 			z-index: ${properties.menu.zIndex};
 			transition: transform ${properties.menu.transition}ms linear;
 			background: ${properties.menu.background};
 			font-size: 1rem;
-			-webkit-transform: translateY(-120%);
-			-moz-transform: translateY(-120%);
-			-ms-transform: translateY(-120%);
-			-o-transform: translateY(-120%);
+			-webkit-transform: translateY(calc(-100% - ${properties.menu.top}));
+			-moz-transform: translateY(calc(-100% - ${properties.menu.top}));
+			-ms-transform: translateY(calc(-100% - ${properties.menu.top}));
+			-o-transform: translateY(calc(-100% - ${properties.menu.top}));
 			-webkit-transition: transform ${properties.menu.transition}ms linear;
 			-moz-transition: transform ${properties.menu.transition}ms linear;
 			-ms-transition: transform ${properties.menu.transition}ms linear;
@@ -191,8 +191,6 @@ class Burger {
 			// нормализуем входные данные
 			// normalize input data
 			let normalizedProperties = this.getNormalizedProperties(properties)
-
-			console.log(normalizedProperties)
 
 			// создание стилей
 			// create style css
