@@ -36,6 +36,7 @@ create simple nav menu
 ```
 
 ## Example and listing of all js settings
+all parameters are recommended and may not be specified
 
 ```js
 Burger.init('burger', {
